@@ -136,9 +136,9 @@ while True:
 
                 while True:
                     print('--- CATEGORIA ---')
-                    print('1 - Criar categoria')
+                    print('1 - Adicionar categoria')
                     print('2 - Listar categoria')
-                    print('3 - Excluir categoria')
+                    print('3 - Editar limite mensal')
                     print('0 - Menu')
                     print('-----------------')
 
@@ -181,14 +181,24 @@ while True:
                         bd.listar_categoria()
 
                     elif opcao_categoria == 3:
-                        print('Excluir categoria')
-                        try:
-                            busca_id = int(input('Digite o id da categoria que deseja excluir: '))
-                        except ValueError:
-                            print('Digite apenas números! Digite novamente.')
-                            continue
+                        print('Editar limite mesal da categoria')
+                        if not bd.categorias:
+                            print('Nenhuma categoria cadastrada.')
+                        else:
+                            bd.listar_categoria()
+                            try:                            
+                                busca_id = int(input('Digite o id da categoria que deseja editar: '))
+                            except ValueError:
+                                print('Digite apenas números! Digite novamente.')
+                                continue
+                            try:
+                                novo_limite = float(input('Digite o novo limite mensal da categoria: R$ '))
+                            except ValueError:
+                                print('Digite apenas números em R$! Digite novamente.')
+                                continue
                         
-                        bd.excluir_categoria(busca_id)
+                        bd.update_categoria(busca_id, novo_limite)
+
     
     elif opcao == 2:
         print('Relatório')

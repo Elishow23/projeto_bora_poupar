@@ -10,8 +10,8 @@ class Categoria:
         self.tipo = tipo
         self.limite_mensal = limite_mensal
 
-    def update_limite_mensal(self, limite_mensal):
-        self.limite_mensal = limite_mensal
+    def list_categoria(self):
+        return f'ID: {self.id} - Tipo: {self.tipo} - Limite Mensal R$: {self.limite_mensal}'
 
 #------------------------
 #Classe categoria

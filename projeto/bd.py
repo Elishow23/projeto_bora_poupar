@@ -14,15 +14,19 @@ class bd:
 #-----------------
 
     def inserir_categoria(self, categoria):
-        
-        if categoria.tipo in self.tipos:
-            self.id_categoria += 1
-            categoria.id = self.id_categoria
-            self.categorias.append(categoria)
-            print('Categoria inserida com sucesso!')
+        if len(self.categorias) != 4:
+            if categoria.tipo in [c.tipo for c in self.categorias]:
+                print('Categoria já existe. Não é possível inserir categorias repetidas.')
+            else:
+                if categoria.tipo in self.tipos:
+                    self.id_categoria += 1
+                    categoria.id = self.id_categoria
+                    self.categorias.append(categoria)
+                    print('Categoria inserida com sucesso!')
+                else:
+                    print("Tipo de categoria inválido.")
         else:
-            print("Tipo de categoria inválido.")
-        
+            print('Limite de categorias atingido. Não é possível inserir mais categorias.')
         
     
     def listar_categoria(self):
@@ -33,13 +37,13 @@ class bd:
             for categoria in self.categorias:
                 print(f'ID: {categoria.id} - Tipo: {categoria.tipo} - Limite Mensal R$: {categoria.limite_mensal}')
     
-    def update_categoria(self, categoria, busca_id):
+    def update_categoria(self, busca_id, novo_limite):
+        
         for c in self.categorias:
             if c.id == busca_id:
-                c.tipo = categoria.tipo
-                c.limite_mensal = categoria.limite_mensal
+                c.limite_mensal = novo_limite
                 print('Categoria atualizada com sucesso!')
-                return
+                return self.listar_categoria()
         print('Categoria não encontrada.')
     
     def excluir_categoria(self, busca_id):
