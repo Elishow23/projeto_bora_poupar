@@ -3,15 +3,12 @@
 #Classe categoria
 #------------------------
 
-class categoria:
+class Categoria:
 
     def __init__(self, id, tipo, limite_mensal):
         self.id = id
         self.tipo = tipo
         self.limite_mensal = limite_mensal
-
-    def update_tipo(self, tipo):
-        self.tipo = tipo
 
     def update_limite_mensal(self, limite_mensal):
         self.limite_mensal = limite_mensal
@@ -20,7 +17,7 @@ class categoria:
 #Classe categoria
 #------------------------
 
-class despesa:
+class Despesa:
 
     def __init__(self, id, descricao, valor, data, categoria):
         self.id = id
@@ -41,4 +38,10 @@ class despesa:
     def update_categoria(self, categoria):
         self.categoria = categoria
 
-    
+#------------------------
+#Classe usuario
+#------------------------
+
+#------------------------
+#Classe fonte de renda
+#------------------------

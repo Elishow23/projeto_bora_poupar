@@ -1,7 +1,10 @@
+from models import Categoria
+
 class bd:
     def __init__(self):
         self.despesas = []
         self.categorias = []
+        self.tipos = ['Fixa', 'Variavel', 'Essencial', 'Diarias']
         self.id_categoria = 0
         self.id_despesa = 0
 
@@ -11,11 +14,15 @@ class bd:
 #-----------------
 
     def inserir_categoria(self, categoria):
-        self.id_categoria += 1
-        categoria.id = self.id_categoria
-        self.categorias.append(categoria)
-
-        return print('Categoria inserida com sucesso!')
+        
+        if categoria.tipo in self.tipos:
+            self.id_categoria += 1
+            categoria.id = self.id_categoria
+            self.categorias.append(categoria)
+            print('Categoria inserida com sucesso!')
+        else:
+            print("Tipo de categoria inválido.")
+        
         
     
     def listar_categoria(self):
@@ -54,9 +61,13 @@ class bd:
         return print('Despesa inserida com sucesso!')
 
     def listar_despesa(self):
-        for despesa in self.despesas:
-            print(f'ID: {despesa.id} - Descrição: {despesa.descricao} - Valor R$: {despesa.valor} - Data: {despesa.data} - Categoria: {despesa.categoria}')
-    
+        if not self.despesas:
+            print('Nenhuma despesa cadastrada.')
+            return
+        else:
+            for despesa in self.despesas:
+                print(f'ID: {despesa.id} - Descrição: {despesa.descricao} - Valor R$: {despesa.valor} - Data: {despesa.data} - Categoria: {despesa.categoria}')
+        
     def update_despesa(self, despesa, busca_id):
         for d in self.despesas:
             if d.id == busca_id:
@@ -75,3 +86,7 @@ class bd:
                 print('Despesa excluída com sucesso!')
                 return
         print('Despesa não encontrada.')
+
+    def valor_total_despesas(self):
+        total = sum(despesa.valor for despesa in self.despesas)
+        return total
