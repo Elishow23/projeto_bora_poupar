@@ -7,8 +7,8 @@ class bd:
         self.conexao = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Elias_0301!",
-            database="me_poupe",
+            password="senha",
+            database="banco",
             ssl_disabled=True
         )
 
