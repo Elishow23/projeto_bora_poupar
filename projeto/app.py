@@ -47,42 +47,47 @@ while True:
                 break
             elif opcao_despesa == 1:
                 print('Criar despesa')
+
+                resultado = bd.listar_categoria()
                 
-                if not bd.categorias:
+                if resultado is None:
                     print('Cadastre uma categoria para suas despesas!')
                     continue
                 else:
+                    bd.listar_categoria()
                     try:
                         descricao = input('Digite a descrição da despesa: ')
-                    except ValueError:
-                        print('Digite apenas texto! Digite novamente.')
-                        continue
-                    try:
                         valor = float(input('Digite o valor da despesa: R$ '))
                     except ValueError:
-                        print('Digite apenas números em R$! Digite novamente. ')
+                        print('Atenção, para "Descrição" insira texto. Para valor, número em r$: . ')
                         continue
                     try:
-                        data = input('Digite a data da despesa (dd/mm/aaaa): ')
+                        data = input('Digite a data da despesa "dd/mm/aaaa": ')
                     except ValueError:
-                        print('Digite apenas texto! Digite novamente.')
+                        print('Digite no formato "dd/mm/aaaa".')
                         continue
 
-                    bd.listar_categoria()
+                    categorias = bd.listar_categoria()
+
+                    if not categorias:
+                        print("Nenhuma categoria cadastrada.")
+                    else:
+                        for categoria in categorias:
+                            print(categoria)
                     
-                    try:
-                        categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
-                    except ValueError:  
-                        print('Digite apenas números! Digite novamente.')
-                        continue
+                        try:
+                            categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
+                        except ValueError:  
+                            print('Digite apenas números! Digite novamente.')
+                            continue
 
-                    d1 = Despesa(0, descricao, valor, data, categoria)
+                        d1 = Despesa(0, descricao, valor, data, categoria)
 
-                    bd.inserir_despesa(d1)
+                        bd.inserir_despesa(d1)
             
             elif opcao_despesa == 2:
                 print('Editar despesa')
-                bd.listar_despesa()
+                bd.listar_despesas()
                 try:
                     busca_id = int(input('Digite o id da despesa que deseja editar: '))
                 except ValueError:
@@ -110,25 +115,36 @@ while True:
                     print('Digite apenas números! Digite novamente.')
                     continue
 
-                d1 = despesa(0, descricao, valor, data, categoria)
-                bd.update_despesa(d1, busca_id)
+                d1 = Despesa(0, descricao, valor, data, categoria)
+                bd.atualizar_despesa(d1, busca_id)
             
             elif opcao_despesa == 3:
                 print('Listar despesas')
-                bd.listar_despesa()
+                despesas = bd.listar_despesas()
+
+                if not despesas:
+                    print('Nenhuma despesa cadastrada.')
+                else:
+                    for d in despesas:
+                        print(f"ID: {d[0]} | {d[1]} | R$ {d[2]} | {d[3]} | Categoria: {d[4]}")
 
             elif opcao_despesa == 4:
                 print('Excluir despesa')
-                if not bd.despesas:
-                    print('Nenhuma despesa cadastrada para excluir.')
-                    continue
+
+                despesas = bd.listar_despesas()
+
+                if not despesas:
+                    print('Nenhuma despesa cadastrada.')
                 else:
+                    for d in despesas:
+                        print(f"ID: {d[0]} | {d[1]} | R$ {d[2]} | {d[3]} | Categoria: {d[4]}")
+                
                     try:
                         busca_id = int(input('Digite o id da despesa que deseja excluir: '))
                     except ValueError:
                         print('Digite apenas números! Digite novamente.')
                         continue
-                bd.excluir_despesa(busca_id)
+                    bd.excluir_despesa(busca_id)
             
             elif opcao_despesa == 5:
                 print('Categoria')
@@ -155,17 +171,20 @@ while True:
                         print('Criar categoria')
                         try:
                             print('Categoria de despesas: Fixa, Variavel, Essencial, Diarias.')
-                            print('+---------------------+---------------------------+-----------------+')
-                            print('| Tipo de despesa     | Descrição                 | Exemplo         |')
-                            print('+---------------------+---------------------------+-----------------+')
-                            print('| Fixa                | Despesas recorrentes      | Aluguel, contas |')
-                            print('| Variavel            | Despesas que podem mudar  | Lazer, compras  |')
-                            print('| Essencial           | Despesas necessárias      | Alimentação,Saúd|')
-                            print('| Diarias             | para o dia a dia          | transporte      |')
-                            print('+--------------------+---------------------+-----------------+------|')
-                            tipo = input('Digite o tipo da categoria, ex: Fixa, Variavel, Essencial, Diarias: ')
+                            print('+-------------+-------------------------+-----------------+')
+                            print('|ID categoria | Tipo de despesa         | Exemplo         |')
+                            print('+-------------+-------------------------+-----------------+')
+                            print('| 1. Fixa     | Despesas recorrentes    | Aluguel, contas |')
+                            print('| 2. Variavel | Despesas que podem mudar| Lazer, compras  |')
+                            print('| 3. Essencial| Despesas necessárias    | Alimentação,Saúd|')
+                            print('| 4. Diarias  | para o dia a dia        | transporte      |')
+                            print('+-------------+-------------------------+-----------------|')
+                            tipo = int(input('Digite o tipo da categoria, ex: 1 para Fixa, 2 para Variavel: '))
+                            if not tipo in [1, 2, 3, 4]:
+                                print('Opção inválida! Digite novamente.')
+                                continue
                         except ValueError:
-                            print('Digite apenas texto! Digite novamente.')
+                            print('Digite apenas números! Digite novamente.')
                             continue
                         try:
                             limite_mensal = float(input('Digite o limite mensal da categoria: R$ '))
@@ -178,26 +197,34 @@ while True:
 
                     elif opcao_categoria == 2:
                         print('Listar categorias')
-                        bd.listar_categoria()
+                        categoria = bd.listar_categoria()
+
+                        if not categoria:
+                            print('Nenhuma categoria cadastrada.')
+                        else:
+                            for c in categoria:
+                                print(f"ID: {c[0]} | Tipo: {c[1]} | Limite: R$ {c[2]:.2f}")
 
                     elif opcao_categoria == 3:
                         print('Editar limite mesal da categoria')
-                        if not bd.categorias:
-                            print('Nenhuma categoria cadastrada.')
+
+                        categorias = bd.listar_categoria()
+
+                        if not categorias:
+                            print("Nenhuma categoria cadastrada.")
                         else:
-                            bd.listar_categoria()
+                            for categoria in categorias:
+                                print (f'ID: {categoria[0]} | Tipo: {categoria[1]} | Limite: R$ {categoria[2]:.2f}')
+
                             try:                            
-                                busca_id = int(input('Digite o id da categoria que deseja editar: '))
-                            except ValueError:
-                                print('Digite apenas números! Digite novamente.')
-                                continue
-                            try:
+                                id_busca = int(input('Digite o id da categoria que deseja editar: '))
                                 novo_limite = float(input('Digite o novo limite mensal da categoria: R$ '))
+                                bd.atualizar_categoria(novo_limite, id_busca)
                             except ValueError:
-                                print('Digite apenas números em R$! Digite novamente.')
+                                print('Digite apenas números.')
                                 continue
                         
-                        bd.update_categoria(busca_id, novo_limite)
+                            
 
     
     elif opcao == 2:
@@ -223,21 +250,10 @@ while True:
                 break
             elif opcao_relatorio == 1:
                 print('Total de despesas')
-                total_despesas = sum(despesa.valor for despesa in bd.despesas)
-                print(f'Total de despesas: R$ {total_despesas:.2f}')
+                bd.valor_total_despesas()
             elif opcao_relatorio == 2:
                 print('Despesas por categoria')
-                categorias = {}
-                for despesa in bd.despesas:
-                    categoria_id = despesa.categoria
-                    if categoria_id in categorias:
-                        categorias[categoria_id] += despesa.valor
-                    else:
-                        categorias[categoria_id] = despesa.valor
-
-                for categoria_id, total in categorias.items():
-                    categoria_tipo = next((c.tipo for c in bd.categorias if c.id == categoria_id), 'Categoria desconhecida')
-                    print(f'Categoria: {categoria_tipo} - Total de despesas: R$ {total:.2f}')
+                bd.total_despesas_por_categoria()
 
     else:
         print('Opção inválida! Digite novamente.')

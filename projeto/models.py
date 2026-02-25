@@ -26,17 +26,8 @@ class Despesa:
         self.data = data
         self.categoria = categoria
 
-    def update_descricao(self, descricao):
-        self.descricao = descricao
-
-    def update_valor(self, valor):
-        self.valor = valor
-
-    def update_data(self, data):
-        self.data = data
-
-    def update_categoria(self, categoria):
-        self.categoria = categoria
+    def list_despesa(self):
+        return f'ID: {self.id} - Descrição: {self.descricao} - Valor R$: {self.valor} - Data: {self.data} - Categoria: {self.categoria}'
 
 #------------------------
 #Classe usuario
