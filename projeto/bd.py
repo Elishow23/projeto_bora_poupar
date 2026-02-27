@@ -7,8 +7,8 @@ class bd:
         self.conexao = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="senha",
-            database="banco",
+            password="Elias_0301!",
+            database="me_poupe",
             ssl_disabled=True
         )
 
@@ -65,6 +65,8 @@ class bd:
             print("Categoria inserida!")
         except mysql.connector.Error as err:
             print(f"Categoria já existente no banco de dados: ")
+        except mysql.connector.errors.IntegrityError as err:
+            print(f"Categoria não cadastrada: ")
 
     def listar_categoria(self):
         sql = "SELECT * FROM categorias"
@@ -104,9 +106,13 @@ class bd:
         INSERT INTO despesas (id, descricao, valor, data, categoria_id)
         VALUES (%s, %s, %s, %s, %s)
         """
-        self.cursor.execute(sql, (despesa.id, despesa.descricao, despesa.valor, data_convertida, despesa.categoria))
-        self.conexao.commit()
-        print("Despesa inserida!")
+        try:
+            self.cursor.execute(sql, (despesa.id, despesa.descricao, despesa.valor, data_convertida, despesa.categoria))
+            self.conexao.commit()
+            print("Despesa inserida!")
+        except mysql.connector.errors.IntegrityError as err:
+            print(f"Selecione uma categoria existente: ")
+
 
     def listar_despesas(self):
         sql = """

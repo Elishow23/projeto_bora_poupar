@@ -1,3 +1,113 @@
-h1{
-    color: blue;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+header {
+    background-color: #1e293b;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+main {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+main p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+    padding: 12px 25px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.actions a:hover {
+    background-color: #1d4ed8;
+}
+
+.lista-despesas {
+    width: 400px;
+    height: 350px; /* altura fixa */
+    overflow-y: auto; /* ativa rolagem vertical */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Scroll mais bonito */
+.lista-despesas::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lista-despesas::-webkit-scrollbar-thumb {
+    background-color: #2563eb;
+    border-radius: 10px;
+}
+
+.card {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f4f6f9;
+}
+
+.card h3 {
+    margin: 0 0 5px 0;
+}
+
+footer {
+    margin-top: 130px;
+    padding: 20px;
+    background-color: #1e293b;
+    color: white;
+    text-align: center;
+    font-size: 14px;
 }

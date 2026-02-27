@@ -48,13 +48,12 @@ while True:
             elif opcao_despesa == 1:
                 print('Criar despesa')
 
-                resultado = bd.listar_categoria()
+                categorias = bd.listar_categoria()
                 
-                if resultado is None:
+                if categorias is None:
                     print('Cadastre uma categoria para suas despesas!')
                     continue
                 else:
-                    bd.listar_categoria()
                     try:
                         descricao = input('Digite a descrição da despesa: ')
                         valor = float(input('Digite o valor da despesa: R$ '))
@@ -67,56 +66,57 @@ while True:
                         print('Digite no formato "dd/mm/aaaa".')
                         continue
 
-                    categorias = bd.listar_categoria()
-
-                    if not categorias:
-                        print("Nenhuma categoria cadastrada.")
-                    else:
-                        for categoria in categorias:
-                            print(categoria)
+                    for categoria in categorias:
+                        print(f'ID: {categoria[0]} | Tipo: {categoria[1]} | Limite: R$ {categoria[2]:.2f}')
                     
-                        try:
-                            categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
-                        except ValueError:  
-                            print('Digite apenas números! Digite novamente.')
-                            continue
+                    try:
+                        categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
+                    except ValueError:  
+                        print('Digite apenas números! Digite novamente.')
+                        continue
 
-                        d1 = Despesa(0, descricao, valor, data, categoria)
+                    d1 = Despesa(0, descricao, valor, data, categoria)
 
-                        bd.inserir_despesa(d1)
+                    bd.inserir_despesa(d1)
             
             elif opcao_despesa == 2:
                 print('Editar despesa')
-                bd.listar_despesas()
-                try:
-                    busca_id = int(input('Digite o id da despesa que deseja editar: '))
-                except ValueError:
-                    print('Digite apenas números! Digite novamente.')
-                    continue
-                try:
-                    descricao = input('Digite a descrição da despesa: ')
-                except ValueError:
-                    print('Digite apenas texto! Digite novamente.')
-                    continue
-                try:
-                    valor = float(input('Digite o valor da despesa: R$'))
-                except ValueError:
-                    print('Digite apenas números em R$! Digite novamente.')
-                    continue
-                try:
-                    data = input('Digite a data da despesa (dd/mm/aaaa): ')
-                except ValueError:
-                    print('Digite no formato (dd/mm/aaaa)! Tente novamente.')
-                    continue
+                despesa = bd.listar_despesas()
 
-                try:
-                    categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
-                except ValueError:
-                    print('Digite apenas números! Digite novamente.')
-                    continue
+                if not despesa:
+                    print('Nenhuma despesa cadastrada.')
+                else:
+                    for d in despesa:
+                        print(f"ID: {d[0]} | {d[1]} | R$ {d[2]} | {d[3]} | Categoria: {d[4]}")
+                    try:
+                        busca_id = int(input('Digite o id da despesa que deseja editar: '))
+                    except ValueError:
+                        print('Digite apenas números! Digite novamente.')
+                        continue
+                    try:
+                        descricao = input('Digite a descrição da despesa: ')
+                    except ValueError:
+                        print('Digite apenas texto! Digite novamente.')
+                        continue
+                    try:
+                        valor = float(input('Digite o valor da despesa: R$'))
+                    except ValueError:
+                        print('Digite apenas números em R$! Digite novamente.')
+                        continue
+                    try:
+                        data = input('Digite a data da despesa (dd/mm/aaaa): ')
+                    except ValueError:
+                        print('Digite no formato (dd/mm/aaaa)! Tente novamente.')
+                        continue
 
-                d1 = Despesa(0, descricao, valor, data, categoria)
-                bd.atualizar_despesa(d1, busca_id)
+                    try:
+                        categoria = int(input('Selecione o tipo da sua dispesa de acordo com o que você já tem cadastrado: '))
+                    except ValueError:
+                        print('Digite apenas números! Digite novamente.')
+                        continue
+
+                    d1 = Despesa(0, descricao, valor, data, categoria)
+                    bd.atualizar_despesa(d1, busca_id)
             
             elif opcao_despesa == 3:
                 print('Listar despesas')

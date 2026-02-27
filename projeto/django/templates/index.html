@@ -1,1 +1,29 @@
-<h1>Hello Word</h1>
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me poupe</title>
+</head>
+<body>
+    <header>
+        <h1> Me Poupe </h1>
+        <nav>
+            <a href="{% url 'despesa' %}">Minhas Despesas</a>
+            <a href="{% url 'relatorio' %}">Relatório</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Bem-vindo ao Me Poupe</h2>
+            <p>Gerencie suas despesas e acompanhe seus relatórios financeiros de forma simples e organizada.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Me Poupe</p>
+    </footer>
+</body>
+</html>
