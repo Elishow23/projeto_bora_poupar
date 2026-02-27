@@ -12,6 +12,7 @@
     <header>
         <h1> Despesas </h1>
         <nav>
+            <a href="{% url 'index' %}">Voltar</a>
             <a href="{% url 'Categoria'}">Categoria</a>
             <a href="{% url 'cadastroDespesa' %}">+ Despesas</a>
         </nav>
@@ -19,117 +20,113 @@
     <main>
             <div class="lista-despesas">
 
-                <!-- Depois você coloca o FOR do Django aqui -->
+                <!-- Colocar o FOR do Django aqui -->
                 <div class="card">
                     <h3>Aluguel</h3>
                     <p>R$ 1200,00</p>
+                    <div>
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Supermercado</h3>
                     <p>R$ 350,00</p>
+                    <div>
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Internet</h3>
                     <p>R$ 99,90</p>
+                    <div >
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Internet</h3>
                     <p>R$ 99,90</p>
+                    <div >
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Supermercado</h3>
                     <p>R$ 350,00</p>
+                    <div>
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Internet</h3>
                     <p>R$ 99,90</p>
+                    <div>
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
                 
                 <div class="card">
                     <h3>Internet</h3>
                     <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Aluguel</h3>
-                    <p>R$ 1200,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Supermercado</h3>
-                    <p>R$ 350,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Supermercado</h3>
-                    <p>R$ 350,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Aluguel</h3>
-                    <p>R$ 1200,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Supermercado</h3>
-                    <p>R$ 350,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-
-                <div class="card">
-                    <h3>Supermercado</h3>
-                    <p>R$ 350,00</p>
-                </div>
-
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Internet</h3>
-                    <p>R$ 99,90</p>
+                    <div>
+                        <h3 class = "butao_despesa">Editar</h3>
+                        <h3 class = "butao_despesa">Excluir</h3>
+                    </div>
                 </div>
 
             </div>
+            <div class = "lista-despesas">
+                <div class = "adicionar" >
+                    <button onclick="mostrarFormulario()">Adicionar despesas</button>
+                </div>
+            </div>
+            <div>
+                <form class="form-despesa" id="formulario">
+        
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="descricao" required>
+
+                    <label for="valor">Valor (R$)</label>
+                    <input type="number" id="valor" name="valor" step="0.01" required>
+
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Selecione</option>
+                        <option value="fixa">Fixa</option>
+                        <option value="variavel">Variável</option>
+                        <option value="essecial">Essecial</option>
+                        <option value="diario">Diário</option>
+                    </select>
+
+                    <label for="data">Data</label>
+                    <input type="date" id="data" name="data" required>
+
+                    <button type="submit" class="butao_despesa">
+                        Cadastrar Despesa
+                    </button>
+
+                </form>
+            </div>
+            
     </main>
     <footer>
         <p>© 2026 Me Poupe</p>
     </footer>
+    <script>
+        function mostrarFormulario() {
+            document.getElementById("formulario").style.display = "block";
+        }
+    </script>
 
 </body>
 </html>

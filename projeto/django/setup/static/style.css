@@ -36,8 +36,12 @@ nav a:hover {
 }
 
 main {
+    display: flex;
+    flex-direction: row;
     padding: 60px 20px;
     text-align: center;
+    justify-content:center;
+    gap: 20px;
 }
 
 main h2 {
@@ -73,7 +77,7 @@ main p {
 }
 
 .lista-despesas {
-    width: 400px;
+    width: 500px;
     height: 350px; /* altura fixa */
     overflow-y: auto; /* ativa rolagem vertical */
     background: white;
@@ -97,10 +101,64 @@ main p {
     margin-bottom: 10px;
     border-radius: 8px;
     background-color: #f4f6f9;
+    display: flex;          /* ativa o modo flex */
+    flex-direction: row;
+}
+
+.adicionar{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f4f6f9;
 }
 
 .card h3 {
     margin: 0 0 5px 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f6f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-despesa {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-despesa input,
+.form-despesa select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.butao_despesa {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.butao_despesa:hover {
+    background-color: #45a049;
 }
 
 footer {
