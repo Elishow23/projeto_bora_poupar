@@ -14,3 +14,6 @@ def relatorio(request):
 
 def cadastroDespesa(request):
     return render(request, "cadastroDespesa.html")
+
+def categoria(request):
+    return render(request, "categoria.html")

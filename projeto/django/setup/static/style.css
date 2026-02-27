@@ -160,6 +160,98 @@ h2 {
 .butao_despesa:hover {
     background-color: #45a049;
 }
+.container-relatorio {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f6f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-relatorio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-relatorio button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-relatorio button:hover {
+    background-color: #45a049;
+}
+
+.resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 6px;
+    min-height: 50px;
+}
+
+.pesquisa-despesa {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.pesquisa-despesa form {
+    display: flex;
+    gap: 10px;
+}
+
+.pesquisa-despesa input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.total-despesa{
+
+    width: 500px;
+    height: 100px; /* altura fixa */
+    /*overflow-y: auto; ativa rolagem vertical */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);    
+
+}
+
+.total-despesa {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 400px;
+
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    color: white;
+
+    border-radius: 12px;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.total-despesa h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.valor-total {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
 footer {
     margin-top: 130px;
