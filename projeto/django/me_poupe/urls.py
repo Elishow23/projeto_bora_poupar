@@ -1,5 +1,5 @@
 from django.urls import path
-from me_poupe.views import index, despesa, relatorio, cadastroDespesa, categoria
+from me_poupe.views import index, despesa, relatorio, cadastro_despesa, listar_despesas, excluir_despesa
 
 
 urlpatterns = [
@@ -7,7 +7,7 @@ urlpatterns = [
   path('', index, name='index'),
   path('despesa/', despesa, name='despesa'),
   path('relatorio/', relatorio, name='relatorio'),
-  path('despesa/cadastro/', cadastroDespesa, name='cadastroDespesa'),
-  path('despesa/categoria/', categoria, name='categoria'),
-
+  path('despesa/cadastro/', cadastro_despesa, name='cadastro_despesa'),
+  path('despesa/listar/', listar_despesas, name='listar_despesas'),
+  path('despesa/excluir/<int:id>/', excluir_despesa, name='excluir_despesa'),
 ]

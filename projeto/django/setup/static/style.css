@@ -102,7 +102,8 @@ main p {
     border-radius: 8px;
     background-color: #f4f6f9;
     display: flex;          /* ativa o modo flex */
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .adicionar{
@@ -261,3 +262,11 @@ footer {
     text-align: center;
     font-size: 14px;
 }
+
+.data_desc{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* esquerda */
+}
+
+

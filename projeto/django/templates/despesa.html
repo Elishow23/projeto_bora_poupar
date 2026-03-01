@@ -13,7 +13,6 @@
         <h1> Despesas </h1>
         <nav>
             <a href="{% url 'index' %}">Voltar</a>
-            <!--<a href="{% url 'categoria' %}">Categoria</a>-->
         </nav>
     </header>
     <main>
@@ -26,43 +25,26 @@
                 </div>
 
                 <div class="lista-despesas">
+                        {% for despesa in despesas %}
+                        <div class="card">
+                            <div class="data_desc">
+                                <h3>{{ despesa.descricao }}</h3>
+                                <p>R$ {{ despesa.valor }}</p>
+                                
 
-                    <!-- Colocar o FOR do Django aqui -->
-                    <div class="card">
-                        <h3>Aluguel</h3>
-                        <p>R$ 1200,00</p>
-                        <div>
-                            <h3 class = "butao_despesa">Editar</h3>
-                            <h3 class = "butao_despesa">Excluir</h3>
+                                <div>
+                                    <button class="butao_despesa">Editar</button>
+                                    <a href="{% url 'excluir_despesa' despesa.id %}" >
+                                        <button class="butao_despesa">Excluir</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <small>{{ despesa.categoria }} | {{ despesa.data }}</small>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Supermercado</h3>
-                        <p>R$ 350,00</p>
-                        <div>
-                            <h3 class = "butao_despesa">Editar</h3>
-                            <h3 class = "butao_despesa">Excluir</h3>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Internet</h3>
-                        <p>R$ 99,90</p>
-                        <div >
-                            <h3 class = "butao_despesa">Editar</h3>
-                            <h3 class = "butao_despesa">Excluir</h3>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Internet</h3>
-                        <p>R$ 99,90</p>
-                        <div >
-                            <h3 class = "butao_despesa">Editar</h3>
-                            <h3 class = "butao_despesa">Excluir</h3>
-                        </div>
-                    </div>
+                            
+                        {% empty %}
+                            <p>Nenhuma despesa cadastrada.</p>
+                        {% endfor %}
                 </div>
                 <div class="total-despesa">
                     <h3>Total das Despesas</h3>
@@ -70,36 +52,32 @@
                 </div>
             </div>
             <div>
-                <div class="container">
-                    <h2>Cadastro de Despesa</h2>
+                <form class="form-despesa" method="POST" action="{% url 'cadastro_despesa' %}">
+                    {% csrf_token %}
 
-                    <form class="form-despesa" id="formulario">
-        
-                        <label for="descricao">Descrição</label>
-                        <input type="text" id="descricao" name="descricao" required>
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="descricao" required>
 
-                        <label for="valor">Valor (R$)</label>
-                        <input type="number" id="valor" name="valor" step="0.01" required>
+                    <label for="valor">Valor (R$)</label>
+                    <input type="number" id="valor" name="valor" step="0.01" required>
 
-                        <label for="categoria">Categoria</label>
-                        <select id="categoria" name="categoria" required>
-                            <option value="">Selecione</option>
-                            <option value="fixa">Fixa</option>
-                            <option value="variavel">Variável</option>
-                            <option value="essecial">Essecial</option>
-                            <option value="diario">Diário</option>
-                        </select>
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Selecione</option>
+                        <option value="fixa">Fixa</option>
+                        <option value="variavel">Variável</option>
+                        <option value="essencial">Essencial</option>
+                        <option value="diario">Diário</option>
+                    </select>
 
-                        <label for="data">Data</label>
-                        <input type="date" id="data" name="data" required>
+                    <label for="data">Data</label>
+                    <input type="date" id="data" name="data" required>
 
-                        <a href="{% url 'despesa' %}" >
-                            <button type="submit" class="butao_despesa">
-                            Cadastrar Despesa
-                            </button>
-                        </a>
-                    </form>
-                </div>
+                    <button type="submit" class="butao_despesa">
+                        Cadastrar Despesa
+                    </button>
+
+                </form>
             </div>
     </main>
     <footer>
