@@ -11,7 +11,17 @@ def index(request):
     return render(request, "index.html")
 
 def despesa(request):
-    return render(request, "despesa.html")
+
+    despesas = Despesa.objects.all()
+
+    total = despesas.aggregate(Sum('valor'))['valor__sum'] or 0
+
+    total = float(total)
+
+    return render(request, 'despesa.html', {
+        'despesas': despesas.order_by('-data'),
+        'total': total
+    })
 
 def relatorio(request):
     return render(request, "relatorio.html")

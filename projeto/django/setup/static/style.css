@@ -151,16 +151,49 @@ h2 {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #4CAF50;
+    background-color: #0075e2;
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.butao_despesa:hover {
-    background-color: #45a049;
+.butao_excluir{
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0075e2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+.butao_editar{
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0075e2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.butao_excluir:hover {
+    background-color: #FF0000;
+}
+
+.butao_editar:hover {
+    background-color: green;
+}
+
+.butao_despesa:hover {
+    background-color: green;
+}
+
 .container-relatorio {
     max-width: 500px;
     margin: 40px auto;
@@ -232,7 +265,7 @@ h2 {
     padding: 20px;
     max-width: 400px;
 
-    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    background: linear-gradient(135deg, #0075e2, #2e7d32);
     color: white;
 
     border-radius: 12px;
@@ -266,7 +299,17 @@ footer {
 .data_desc{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start; /* esquerda */
+    gap: 20px;
+    justify-content: space-between;
 }
 
+.data_des > div {
+    flex: 1;
+}
+
+.espaco_valor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
