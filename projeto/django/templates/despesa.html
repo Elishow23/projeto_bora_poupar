@@ -13,12 +13,13 @@
         <h1> Despesas </h1>
         <nav>
             <a href="{% url 'index' %}">Voltar</a>
+            <a href="{% url 'relatorio' %}">Relatório</a>
         </nav>
     </header>
     <main>
             <div>
                 <div class="pesquisa-despesa">
-                    <form method="GET">
+                    <form method="GET" action="{% url 'pesquisar' %}">
                         <input type="text" name="q" placeholder="Pesquisar despesa..." value="{{ request.GET.q }}">
                         <button type="submit" class="butao_despesa">Pesquisar</button>
                     </form>
@@ -33,15 +34,20 @@
                                 </div>
                                 <div class = "espaco_valor">
                                     <p>R$ {{ despesa.valor }}</p>
-                                </div>
+                                </div> 
+                                
+                            </div>
+                            <div class = "espaco_data_tipo"  >
+                                <small>{{ despesa.categoria }} | {{ despesa.data }}</small>
                                 <div>
-                                    <button class="butao_editar">Editar</button>
+                                    <a href="{% url 'editar_despesa' despesa.id %}">
+                                        <button class="butao_editar">Editar</button>
+                                    </a>
                                     <a href="{% url 'excluir_despesa' despesa.id %}" >
                                         <button class="butao_excluir">Excluir</button>
                                     </a>
                                 </div>
                             </div>
-                            <small>{{ despesa.categoria }} | {{ despesa.data }}</small>
                         </div>
                             
                         {% empty %}
@@ -54,29 +60,29 @@
                 </div>
             </div>
             <div>
-                <form class="form-despesa" method="POST" action="{% url 'cadastro_despesa' %}">
+                <form class="form-despesa" method="POST" action="{% if despesa %}{% url 'editar_despesa' despesa.id %}{% else %}{% url 'cadastro_despesa' %}{% endif %}">
                     {% csrf_token %}
 
                     <label for="descricao">Descrição</label>
-                    <input type="text" id="descricao" name="descricao" maxlength="15" required>
+                    <input type="text" id="descricao" name="descricao" maxlength="15" value="{{ despesa.descricao|default:'' }}" required>
 
                     <label for="valor">Valor (R$)</label>
-                    <input type="number" id="valor" name="valor" step="0.01" required>
+                    <input type="number" id="valor" name="valor" step="0.01" value="{{ despesa.valor|default:'' }}" required>
 
                     <label for="categoria">Categoria</label>
                     <select id="categoria" name="categoria" required>
                         <option value="">Selecione</option>
-                        <option value="fixa">Fixa</option>
-                        <option value="variavel">Variável</option>
-                        <option value="essencial">Essencial</option>
-                        <option value="diario">Diário</option>
+                        <option value="Fixa" {% if despesa.categoria == "Fixa" %}selected{% endif %}>Fixa</option>
+                        <option value="Variavel" {% if despesa.categoria == "Variavel" %}selected{% endif %}>Variável</option>
+                        <option value="Essencial" {% if despesa.categoria == "Essencial" %}selected{% endif %}>Essencial</option>
+                        <option value="Diario" {% if despesa.categoria == "Diario" %}selected{% endif %}>Diário</option>
                     </select>
 
                     <label for="data">Data</label>
-                    <input type="date" id="data" name="data" required>
+                    <input type="date" id="data" name="data" value="{{ despesa.data|date:'Y-m-d'|default:'' }}" required>
 
                     <button type="submit" class="butao_despesa">
-                        Cadastrar Despesa
+                        Salvar
                     </button>
 
                 </form>

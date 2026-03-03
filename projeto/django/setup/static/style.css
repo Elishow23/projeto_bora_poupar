@@ -77,8 +77,8 @@ main p {
 }
 
 .lista-despesas {
-    width: 500px;
-    height: 350px; /* altura fixa */
+    width: 400px;
+    height: 400px; /* altura fixa */
     overflow-y: auto; /* ativa rolagem vertical */
     background: white;
     padding: 20px;
@@ -104,6 +104,7 @@ main p {
     display: flex;          /* ativa o modo flex */
     flex-direction: column;
     justify-content: flex-start;
+    /*height: 90px;*/
 }
 
 .adicionar{
@@ -151,7 +152,7 @@ h2 {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #0075e2;
+    background-color: #1E293b;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -163,7 +164,7 @@ h2 {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #0075e2;
+    background-color: #1E293b;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -175,7 +176,7 @@ h2 {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #0075e2;
+    background-color: #1E293b;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -187,11 +188,12 @@ h2 {
 }
 
 .butao_editar:hover {
-    background-color: green;
+    
+    background-color: #0075e2 ;
 }
 
 .butao_despesa:hover {
-    background-color: green;
+    background-color: #0075e2;
 }
 
 .container-relatorio {
@@ -265,7 +267,7 @@ h2 {
     padding: 20px;
     max-width: 400px;
 
-    background: linear-gradient(135deg, #0075e2, #2e7d32);
+    background: linear-gradient(135deg, #1E293b, #2e7d32);
     color: white;
 
     border-radius: 12px;
@@ -299,7 +301,7 @@ footer {
 .data_desc{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    /*gap: 20px;*/
     justify-content: space-between;
 }
 
@@ -313,3 +315,20 @@ footer {
     justify-content: center;
 }
 
+.espaco_data_tipo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+     align-items: center;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.grafico-container {
+    width: 600px;   /* largura */
+    height: 600px;  /* altura */
+    margin: 0 auto; /* centraliza */
+}

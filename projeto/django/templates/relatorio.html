@@ -1,52 +1,49 @@
 {%load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me poupe</title>
+    <title>Relatório</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <h1> Relatorio </h1>
+        <h2>Relatório de Despesas por Categoria</h2>
         <nav>
-            <a href="{% url 'index' %}">Voltar</a>
+            <a href="{% url 'despesa' %}">Voltar</a>
         </nav>
     </header>
     <main>
-        <div class="container-relatorio">
+        <div class="grafico-container">
+            <canvas id="grafico"></canvas>
+        </div>
 
-            <h2>Relatório</h2>
+        <script>
+            const categorias = JSON.parse('{{ categorias|escapejs }}');
+            const totais = JSON.parse('{{ totais|escapejs }}');
 
-            <div class="menu-relatorio">
-                <form class="form-despesa" id="formulario" >
-                    <select id="categoria" name="categoria" required>
-                        <option value="">Selecione</option>
-                        <option value="fixa">Fixa</option>
-                        <option value="variavel">Variável</option>
-                        <option value="essecial">Essecial</option>
-                        <option value="diario">Diário</option>
-                    </select>
-                </form>
-                
+            const ctx = document.getElementById('grafico');
 
-                <button onclick="mostrarPorCategoria()">
-                    <h3>Filtrar</h3>
-                </button>
-
-            </div>
-
-                <div id="resultado-relatorio" class="resultado">
-                <!-- Aqui aparecerá o resultado -->
-                    <h3>Resultado aparece aqui</h3>
-                </div>
-
-</div>
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: categorias,
+                    datasets: [{
+                        label: 'Total por Categoria',
+                        data: totais
+                    }]
+                }
+            });
+        </script>
     </main>
     <footer>
         <p>© 2026 Me Poupe</p>
     </footer>
+
+
+
+
+
 </body>
 </html>
