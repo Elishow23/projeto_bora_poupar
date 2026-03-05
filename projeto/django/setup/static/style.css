@@ -5,9 +5,29 @@
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
+    background: linear-gradient(
+        -45deg,
+        #00f5ff,
+        #00ff9d,
+        #ff00cc
+    );
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+}
+
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 header {
@@ -80,7 +100,7 @@ main p {
     width: 400px;
     height: 400px; /* altura fixa */
     overflow-y: auto; /* ativa rolagem vertical */
-    background: white;
+    background: transparent;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -189,11 +209,11 @@ h2 {
 
 .butao_editar:hover {
     
-    background-color: #0075e2 ;
+    background-color: #009D71 ;
 }
 
 .butao_despesa:hover {
-    background-color: #0075e2;
+    background-color: #009d71;
 }
 
 .container-relatorio {
@@ -331,4 +351,28 @@ a {
     width: 600px;   /* largura */
     height: 600px;  /* altura */
     margin: 0 auto; /* centraliza */
+}
+
+.area_grafico{
+    width: 700px;
+    height: 350px; /* altura fixa */
+    /* overflow-y: auto; ativa rolagem vertical */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+.area_crud{
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 750px;
+    background-color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content:space-evenly;
+    gap: 20px;
 }
