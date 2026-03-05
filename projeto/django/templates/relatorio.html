@@ -9,12 +9,12 @@
 </head>
 <body>
     <header>
-        <h2>Relatório de Despesas por Categoria</h2>
+        <h2>Relatório</h2>
         <nav>
             <a href="{% url 'despesa' %}">Voltar</a>
         </nav>
     </header>
-    <main>
+    <main class="animacao">
         <div class="area_grafico">
             <div class="grafico-container">
                 <canvas id="grafico"></canvas>
@@ -39,7 +39,7 @@
             });
         </script>
     </main>
-    <footer>
+    <footer class="conteudo">
         <p>© 2026 Me Poupe</p>
     </footer>
 
