@@ -11,15 +11,17 @@
 <body>
     <header>
         <h1> Me Poupe </h1>
-        <nav>
-            <a href="{% url 'despesa' %}">Minhas Despesas</a>
-        </nav>
     </header>
     <main>
-        <section>
-            <h2>Bem-vindo ao Me Poupe</h2>
-            <p>Gerencie suas despesas e acompanhe seus relatórios financeiros de forma simples e organizada.</p>
-        </section>
+        <div class="area_apresentacao" >
+            <section>
+                <h2>Bem-vindo ao Me Poupe</h2>
+                <p>Gerencie suas despesas e acompanhe seus relatórios financeiros de forma simples e organizada.</p>
+            </section>
+            <nav>
+                <a href="{% url 'despesa' %}"><button class="butao_despesa">Minhas Despesas</button></h1></a>
+            </nav>
+        </div>
     </main>
     <footer>
         <p>© 2026 Me Poupe</p>

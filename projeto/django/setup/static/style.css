@@ -368,7 +368,20 @@ a {
     display: flex;
     flex-direction: row;
     width: 800px;
-    height: 750px;
+    height: 800px;
+    background-color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content:space-evenly;
+    gap: 20px;
+}
+
+.area_apresentacao{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
     background-color: white;
     padding: 60px 20px;
     border-radius: 10px;
