@@ -104,7 +104,7 @@ git clone https://github.com/seu-usuario/bora-poupar.git
 Depois entre na pasta do projeto:
 
 ```bash
-cd bora-poupar/django
+cd bora-poupar/projeto/django
 ```
 
 ---
