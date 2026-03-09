@@ -1,8 +1,8 @@
-# Projeto Bora Poupar
+# Projeto Me Poupe
 
 ## Descrição do Projeto
 
-O **Bora Poupar** é um sistema web desenvolvido para auxiliar no **controle de despesas pessoais**, permitindo que os usuários registrem, visualizem e analisem seus gastos mensais.
+O **Me Poupe** é um sistema web desenvolvido para auxiliar no **controle de despesas pessoais**, permitindo que os usuários registrem, visualizem e analisem seus gastos mensais.
 
 O sistema permite cadastrar despesas, organizá-las por categorias e visualizar relatórios que ajudam o usuário a entender melhor para onde seu dinheiro está indo.
 
@@ -32,7 +32,7 @@ Muitas pessoas têm dificuldade em controlar suas finanças pessoais porque:
 * Não possuem organização financeira
 * Não conseguem visualizar seus gastos de forma clara
 
-O **Bora Poupar** resolve esse problema oferecendo um sistema simples que permite:
+O **Me Poupe** resolve esse problema oferecendo um sistema simples que permite:
 
 * cadastrar despesas
 * organizar gastos
@@ -218,10 +218,10 @@ http://127.0.0.1:8000
 Registro de um gasto realizado pelo usuário.
 
 **Categoria**
-Classificação usada para organizar despesas (ex: alimentação, transporte).
+Classificação usada para organizar despesas (ex: Fixa, Variavel, Essencial...).
 
 **Relatório**
-Visualização resumida dos gastos cadastrados.
+Visualização resumida dos gastos cadastrados por categoria.
 
 **Ambiente Virtual**
 Ambiente isolado utilizado para instalar as dependências do projeto sem afetar o Python do sistema.
