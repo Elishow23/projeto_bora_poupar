@@ -1,5 +1,5 @@
 from django.urls import path
-from me_poupe.views import index, despesa, relatorio, cadastro_despesa, listar_despesas, excluir_despesa, editar_despesa, pesquisar
+from me_poupe.views import index, despesa, relatorio, cadastro_despesa, listar_despesas, excluir_despesa, editar_despesa, pesquisar, api_teste, api_despesas
 
 
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
   path('despesa/excluir/<int:id>/', excluir_despesa, name='excluir_despesa'),
   path('despesa/editar/<int:id>/', editar_despesa, name='editar_despesa'),
   path('despesa/pesquisar/', pesquisar, name='pesquisar'),
+  path('api/teste/', api_teste, name='api_teste'),
+  path('api/despesas/', api_despesas, name='api_despesas'),
 ]

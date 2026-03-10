@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Despesa
 from django.db.models import Sum
 import json
@@ -110,3 +110,18 @@ def relatorio(request):
         'categorias': json.dumps(categorias),
         'totais': json.dumps(totais)
     })
+
+def api_teste(request):
+    dados = {
+        "mensagem": "Backend Django funcionando"
+    }
+    return JsonResponse(dados)
+
+def api_despesas(request):
+    dados = [
+        {"categoria": "Alimentação", "valor": 50},
+        {"categoria": "Transporte", "valor": 30},
+        {"categoria": "Lazer", "valor": 80}
+    ]
+
+    return JsonResponse(dados, safe=False)

@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/eliseu/Área de trabalho/programa/projeto_bora_poupar/projeto/django/venv/bin/python3" "$0" "$@"
+'''exec' "/home/eliseu/Área de trabalho/programa/projeto_me_poupe/projeto/django/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
