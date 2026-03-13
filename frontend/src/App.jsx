@@ -3,8 +3,28 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./paginas/home"
+import Despesas from "./paginas/despesas"
+import Relatorio from "./paginas/relatorio"
 
 function App() {
+  return (
+    <BrowserRouter>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/despesas" element={<Despesas />} />
+        <Route path="/relatorio" element={<Relatorio />} />
+      </Routes>
+
+    </BrowserRouter>
+  )
+}
+
+export default App
+
+/*function App() {
   const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
@@ -27,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/
