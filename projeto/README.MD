@@ -98,7 +98,7 @@ Siga os passos abaixo para rodar o projeto em qualquer computador.
 # 1 Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/bora-poupar.git
+git clone https://github.com/Elishow23/projeto_bora_poupar.git
 ```
 
 Depois entre na pasta do projeto:
