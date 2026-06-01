@@ -1,17 +1,19 @@
 from django.urls import path
-from me_poupe.views import index, despesa, relatorio, cadastro_despesa, listar_despesas, excluir_despesa, editar_despesa, pesquisar, api_teste, api_despesas
-
+from me_poupe.views import (
+    despesa, 
+    relatorio, 
+    cadastro_despesa, 
+    excluir_despesa, 
+    editar_despesa, 
+    pesquisar
+)
 
 urlpatterns = [
-
-  path('', index, name='index'),
-  path('despesa/', despesa, name='despesa'),
-  path('despesa/relatorio/', relatorio, name='relatorio'),
-  path('despesa/cadastro/', cadastro_despesa, name='cadastro_despesa'),
-  path('despesa/listar/', listar_despesas, name='listar_despesas'),
-  path('despesa/excluir/<int:id>/', excluir_despesa, name='excluir_despesa'),
-  path('despesa/editar/<int:id>/', editar_despesa, name='editar_despesa'),
-  path('despesa/pesquisar/', pesquisar, name='pesquisar'),
-  path('api/teste/', api_teste, name='api_teste'),
-  path('api/despesas/', api_despesas, name='api_despesas'),
+    # Mantivemos os mesmos nomes de caminhos (URLs) que você já tinha:
+    path('despesa/', despesa, name='despesa'),
+    path('despesa/relatorio/', relatorio, name='relatorio'),
+    path('despesa/cadastro/', cadastro_despesa, name='cadastro_despesa'),
+    path('despesa/excluir/<int:id>/', excluir_despesa, name='excluir_despesa'),
+    path('despesa/editar/<int:id>/', editar_despesa, name='editar_despesa'),
+    path('despesa/pesquisar/', pesquisar, name='pesquisar'),
 ]
