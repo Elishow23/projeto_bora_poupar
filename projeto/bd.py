@@ -1,15 +1,16 @@
-import mysql.connector
 from datetime import datetime
+import psycopg2
+from psycopg2 import errors
 
 
 class bd:
     def __init__(self):
-        self.conexao = mysql.connector.connect(
+        self.conexao = psycopg2.connect(
             host="localhost",
-            user="root",
-            password="Elias_0301!",
+            user="postgres",
+            password="eliseu#24",
             database="me_poupe",
-            ssl_disabled=True
+            port="5432"
         )
 
         self.cursor = self.conexao.cursor()
@@ -22,7 +23,7 @@ class bd:
 
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS categorias (
-            id INT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             tipo VARCHAR(50) UNIQUE NOT NULL,
             limite_mensal DECIMAL(10,2) NOT NULL
         )
@@ -30,7 +31,7 @@ class bd:
 
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS despesas (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             descricao VARCHAR(100) NOT NULL,
             valor DECIMAL(10,2) NOT NULL,
             data DATE NOT NULL,
